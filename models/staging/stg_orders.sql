@@ -6,7 +6,7 @@ source as (
 
     -- data runs to 2026, truncate timespan to desired range,
     -- current time as default
-    where ordered_at <= {{ var('truncate_timespan_to') }}
+    where ordered_at::date <= {{ var('truncate_timespan_to') }}
 
 ),
 
