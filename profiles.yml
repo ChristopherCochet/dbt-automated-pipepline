@@ -1,9 +1,13 @@
-duckdb:
+supabase:
   outputs:
     dev:
-      type: duckdb
-      path: "{{ env_var('JAFFLE_DB_PATH', './reports/jaffle_shop.duckdb') }}"
-      database: "{{ env_var('JAFFLE_DB_NAME', 'jaffle_shop') }}"
-      schema: "{{ env_var('JAFFLE_TARGET_SCHEMA', 'analytics') }}"
-      threads: 4
+      type: postgres
+      host: aws-0-ap-southeast-2.pooler.supabase.com
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('SUPABASE_PASS') }}"
+      port: 5432
+      dbname: postgres
+      schema: public
+      threads: 1
   target: dev
+
