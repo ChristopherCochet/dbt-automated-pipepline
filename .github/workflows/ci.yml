@@ -15,9 +15,8 @@ jobs:
   dbt-build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
       - name: Checkout repository
-        uses: actions/checkout@masterbranch    
+        uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
