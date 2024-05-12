@@ -5,6 +5,13 @@ on:
 #  schedule:
 #     - cron: 0 4 * * *
 
+env:
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_USER: ${{ secrets.DB_USER }}
+  DB_PASS: ${{ secrets.DB_PASS }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  
 jobs:
   dbt-build:
     runs-on: ubuntu-22.04
@@ -24,20 +31,8 @@ jobs:
       - name: Check dbt version
         run: dbt --version
       - name: Check env var
-        run: echo $DB_NAME
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_NAME: ${{ secrets.DB_NAME }}        
+        run: echo $DB_NAME      
       - name: Check dbt connection
         run: dbt debug
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_NAME: ${{ secrets.DB_NAME }}
       - name: dbt Build
         run: dbt build
