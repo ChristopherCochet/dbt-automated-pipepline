@@ -8,6 +8,6 @@ This repo is a simple DBT pipeline that uses a 'Jaffle Shop Project' to showcase
 
 It runs once a week on Sundays using github actions.
 ## Resources
--  [supabase](https://supabase.com/)
+-  [Supabase](https://supabase.com/)
 -  [dbt Core](https://docs.getdbt.com/docs/introduction#:~:text=dbt%20Core%20is%20an%20open,the%20quickstart%20for%20dbt%20Core.)
 - [ dbt-focused Jaffle Shop project](https://jaffle.sh/)
