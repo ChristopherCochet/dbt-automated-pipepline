@@ -5,18 +5,19 @@ on:
 #  schedule:
 #     - cron: 0 4 * * *
 
-env:
-  DB_HOST: '${{ secrets.DB_HOST }}'
-  DB_PORT: '${{ secrets.DB_PORT }}'
-  DB_USER: '${{ secrets.DB_USER }}'
-  DB_PASS: '${{ secrets.DB_PASS }}'
-  DB_NAME: '${{ secrets.DB_NAME }}'
 jobs:
   dbt-build:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Set-up dbt env variables
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_NAME: ${{ secrets.DB_NAME }}
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
