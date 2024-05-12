@@ -18,14 +18,14 @@ jobs:
     steps:    
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Check env var
-        env:
-          MY_VAL: ${{ secrets.DB_HOST }}
-        run: |
-          import os
-          for q in (os.getenv("MY_VAL")):
-            print(q)
-        shell: python        
+      # - name: Check env var
+      #   env:
+      #     MY_VAL: ${{ secrets.DB_HOST }}
+      #   run: |
+      #     import os
+      #     for q in (os.getenv("MY_VAL")):
+      #       print(q)
+      #   shell: python        
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
