@@ -15,9 +15,17 @@ env:
 jobs:
   dbt-build:
     runs-on: ubuntu-22.04
-    steps:
+    steps:    
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Check env var
+        env:
+          MY_VAL: ${{ secrets.DB_NAME }}
+        run: |
+          import os
+          for q in (os.getenv("MY_VAL")):
+            print(q)
+        shell: python        
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -30,25 +38,7 @@ jobs:
         run: dbt deps
       - name: Check dbt version
         run: dbt --version
-      - name: Check env var
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-        run: |
-          import os
-          for q in (os.getenv("DB_NAME")):
-            print(q)
-        shell: python 
-      - name: Check dbt connection
-        env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_NAME: ${{ secrets.DB_NAME }}      
+      - name: Check dbt connection 
         run: dbt debug
       - name: dbt Build
         run: dbt build
