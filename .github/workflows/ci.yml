@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  workflow_dispatch:
-#  schedule:
-#     - cron: 0 4 * * *
+  # workflow_dispatch:
+ schedule:
+    - cron: 5 8 * * Sun
 
 env:
   DB_HOST: ${{ secrets.DB_HOST }}
