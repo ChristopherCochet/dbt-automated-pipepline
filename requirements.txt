@@ -1,4 +1,4 @@
-dbt-postgres~=1.5.2
+dbt-postgres~=1.7
 pre-commit~=3.0.4
 sqlfluff-templater-dbt~=2.0.0a5
 sqlfluff~=2.0.0a5
