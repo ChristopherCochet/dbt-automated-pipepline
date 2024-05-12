@@ -31,7 +31,7 @@ jobs:
       - name: Check dbt version
         run: dbt --version
       - name: Check env var
-        run: echo $DB_NAME      
+        run: env | grep DB      
       - name: Check dbt connection
         run: dbt debug
       - name: dbt Build
