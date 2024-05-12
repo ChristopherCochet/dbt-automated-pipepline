@@ -27,5 +27,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Install dbt Dependencies
         run: dbt deps
+      - name: Check dbt set-up
+        run: dbt debug        
       - name: dbt Build
         run: dbt build
