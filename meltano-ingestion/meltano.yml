@@ -1,0 +1,36 @@
+version: 1
+default_environment: dev
+project_id: 39511181-26d6-4e5a-9d76-9fb1e171d444
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-rest-api-msdk
+    variant: widen
+    pip_url: tap-rest-api-msdk
+    config:
+      api_url: https://api.github.com/users
+      streams:
+      - name: github_users
+        primary_keys:
+        - id
+      pagination_request_style: restapi_header_link_paginator
+      pagination_response_style: header_link
+      pagination_page_size: 50
+      pagination_results_limit: 250
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+  - name: target-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-target-postgres
+    config:
+      user: ${DB_USER}
+      host: ${DB_HOST}
+      add_record_metadata: true
+      database: ${DB_NAME}
+      port: 5432
+      default_target_schema: sources
