@@ -10,16 +10,28 @@ plugins:
   - name: tap-rest-api-msdk
     variant: widen
     pip_url: tap-rest-api-msdk
-    config:
-      api_url: https://api.github.com/users
+    capabilities:
+      - discover    
+    config:          
+      api_url: https://api.coinlore.net/api/tickers/?start=20&limit=20
       streams:
-      - name: github_users
+      - name: global_crypto
         primary_keys:
         - id
-      pagination_request_style: restapi_header_link_paginator
-      pagination_response_style: header_link
-      pagination_page_size: 50
-      pagination_results_limit: 250
+        records_path: $.data[*]
+  #   pip_url: tap-rest-api-msdk
+  #   config:
+  #     api_url: https://api.github.com/users
+  #     streams:
+  #     - name: github_users
+  #       primary_keys:
+  #       - id
+  #     pagination_request_style: restapi_header_link_paginator
+  #     pagination_response_style: header_link
+  #     pagination_page_size: 50
+  #     pagination_results_limit: 250
+  # - name: tap-rest-api-coinlore
+  # https://www.coinlore.com/cryptocurrency-data-api
   loaders:
   - name: target-jsonl
     variant: andyh1203
