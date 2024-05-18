@@ -1,0 +1,43 @@
+name: CI
+
+on:
+ workflow_dispatch:
+#  schedule:
+#     - cron: 5 8 * * Sun
+
+env:
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_USER: ${{ secrets.DB_USER }}
+  DB_PASS: ${{ secrets.DB_PASS }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  
+jobs:
+  dbt-build:
+    runs-on: ubuntu-22.04
+    steps:    
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # - name: Check env var
+      #   env:
+      #     MY_VAL: ${{ secrets.DB_HOST }}
+      #   run: |
+      #     import os
+      #     for q in (os.getenv("MY_VAL")):
+      #       print(q)
+      #   shell: python        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: 'pip'
+      - name: Install Meltano
+        run: pipx install meltano
+      - name: Install meltano taps
+        run: meltano add extractor tap-rest-api-msdk
+      - name: Install meltano loaders
+        run: meltano add loader target-postgres
+      - name: Check meltano set-up 
+        run: meltano config target-postgres
+      - name: Run meltano ingestion
+        run: meltano run tap-rest-api-msdk target-postgres
