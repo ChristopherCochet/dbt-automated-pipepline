@@ -74,3 +74,15 @@ models:
         description: A boolean indicating if this order included any food items.
       - name: is_drink_order
         description: A boolean indicating if this order included any drink items.
+
+  - name: crypto_prices
+    description: Daily average crypto prices
+    columns:
+      - name: event_date
+        description: date of the crypto prices reported
+      - name: count_price_udpates
+        description: count of crypto price updates on that day
+      - name: count_cryptos
+        description: count of distinct cryptos on that day
+      - name: avg_crypto_prices
+        description: The average crypto prices on that day.

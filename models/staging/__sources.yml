@@ -17,3 +17,11 @@ sources:
         description: One record per SKU for items sold in stores
       - name: raw_supplies
         description: One record per supply per SKU of items sold in stores
+
+  - name: crypto
+    schema: sources
+    description: Crypto data
+    tables:
+      - name: global_crypto
+        description: > 
+          Information about the global crypto market from coinlore api: https://api.coinlore.net/api/global/

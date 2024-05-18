@@ -44,5 +44,6 @@ plugins:
       host: ${DB_HOST}
       add_record_metadata: true
       database: ${DB_NAME}
+      password: ${DB_PASS}
       port: 5432
       default_target_schema: sources
