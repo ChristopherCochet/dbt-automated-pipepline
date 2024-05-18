@@ -5,6 +5,10 @@ on:
 #  schedule:
 #     - cron: 5 8 * * Sun
 
+defaults:
+ run:
+  working-directory: ./meltano-ingestion
+
 env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_PORT: ${{ secrets.DB_PORT }}
@@ -13,19 +17,11 @@ env:
   DB_NAME: ${{ secrets.DB_NAME }}
   
 jobs:
-  dbt-build:
+  meltani-ingestion:
     runs-on: ubuntu-22.04
     steps:    
       - name: Checkout repository
-        uses: actions/checkout@v3
-      # - name: Check env var
-      #   env:
-      #     MY_VAL: ${{ secrets.DB_HOST }}
-      #   run: |
-      #     import os
-      #     for q in (os.getenv("MY_VAL")):
-      #       print(q)
-      #   shell: python        
+        uses: actions/checkout@v3   
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -33,12 +29,15 @@ jobs:
           cache: 'pip'
       - name: Install Meltano
         run: pipx install meltano
-      - name: Install meltano taps and loaders
+      - name: Install meltano taps
         run: |
-          cd meltano-ingestion
           meltano add extractor tap-rest-api-msdk
+      - name: Install meltano loaders
+        run: |
           meltano add loader target-postgres
       - name: Check meltano set-up 
-        run: meltano config target-postgres
+        run: |
+          meltano config target-postgres
       - name: Run meltano ingestion
-        run: meltano run tap-rest-api-msdk target-postgres
+        run: |
+          meltano run tap-rest-api-msdk target-postgres
