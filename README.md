@@ -118,7 +118,44 @@ plugins:
 ## dbt core - The Data Transformation
 A dbt core pipeline performs a series of transformation of the source tables - some are static tables but the crypto source table is updated frequently using github actions.
 
-The transformations are performed in sql and from sources schema tables -> staging schema tables -> marts schema tables.
+A couple of dbt models in the `marts` schema are **incremental models**, as an example the `crypto_prices` model
+
+<details>
+
+```
+{{
+    config(
+        materialized = 'incremental',
+        unique_key = 'event_date'
+    )
+}}
+
+with global_crypto as (
+
+    select * 
+    from {{ ref('stg_global_crypto') }}
+    where true
+    {% if is_incremental() %}
+        and ts >= (
+            select max(event_date) as most_recent_record from {{ this }}
+        )
+    {% endif %}
+)
+select 
+    date_trunc('day', ts) as event_date,
+    symbol,
+    "name",
+    count(distinct ts) as count_table_udpates,
+    count(distinct symbol) as count_cryptos,
+    avg(price_usd) as avg_crypto_prices
+from global_crypto
+group by 1, 2, 3
+
+```
+</details>
+
+
+The transformations are performed in sql and from sources `schema tables -> staging schema tables -> marts schema tables`.
 
 <details>
 
