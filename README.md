@@ -82,7 +82,7 @@ Response:
 </details>
 
 ## Data Ingestion
-Meltano write the data to Supabase into a source table `global_crypto`.
+Meltano writes the crypto API data to Supabase into a source table `global_crypto` when triggered.
 The configuration of the extract and load meltano process can be found in the [`meltano.yml file`](meltano-ingestion/meltano.yml) with the relevant meltano settings below:
 
 ```
