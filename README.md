@@ -120,6 +120,10 @@ plugins:
 ## dbt core - The Data Transformation
 A dbt core pipeline performs a series of transformation of the source tables - some are static tables but the crypto source table is updated frequently using github actions.
 
+The settings of the dbt project reside both in following files:
+- [`profiles.yml`](dbt_project.yml)
+- [`dbt_project.yml`](profiles.yml)
+
 A couple of dbt models in the `marts` schema are **incremental models**, as an example the `crypto_prices` model
 
 <details>
@@ -270,7 +274,28 @@ $ dbt build
 </details>
 
 ## The Data Pipeline
-The dbt pipeline is ran periodically using github actions. The models and can then visualise the pipeline in the dbt core UI using the following commands:
+The dbt pipeline is ran periodically using github actions. The dbt core models and tests reside in the [`model`](models) directory.
+
+```
+├── marts
+│   ├── __models.yml
+│   ├── crypto_prices.sql
+│   ├── customer_status_histories.py
+│   ├── customers.sql
+│   └── orders.sql
+└── staging
+    ├── __models.yml
+    ├── __sources.yml
+    ├── stg_customers.sql
+    ├── stg_global_crypto.sql
+    ├── stg_locations.sql
+    ├── stg_order_items.sql
+    ├── stg_orders.sql
+    ├── stg_products.sql
+    └── stg_supplies.sql
+```
+
+Once the model are created, the pipeline can then be visualised in the dbt core UI using the following commands:
 - `dbt docs generate` and then 
 - `dbt docs serve`
 
