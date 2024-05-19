@@ -34,9 +34,9 @@ This repo showcases a dbt a simple **dbt core** pipeline paired with an data api
 
 The pipeline runs on top a [Postgres SQL database](https://supabase.com/database) hosed in the cloud on Supabase. 
 This postgres database hosts the tables used in the dbt core pipelines. Three schemas are defined:
-- `source`: store the source tables. Also where the ingestion of api data lands.
-- `staging`: stores cleaned versions of the source tables using dbt
-- `marts`: stores final aggregated report tables created by dbt
+- [`source`](models/staging/__sources.yml): store the source tables. Also where the ingestion of api data lands.
+- [`staging`](models/staging/__models.yml): stores cleaned versions of the source tables using dbt
+- [`marts`](models/marts/__models.yml): stores final aggregated report tables created by dbt
 
 ## Meltano - The Data Ingestion  
 
