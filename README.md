@@ -1,8 +1,13 @@
-dbt run status
-[![dbt Tranform CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml)
+### Run Status
 
-meltano ingestion status
-[![Meltano Ingestion CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml)
+The nightly build tests are run daily on AzureML.
+
+| Runs | Branch | Status |
+| --- | --- | --- |
+| **transform** | main | [![dbt Tranform CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml) | 
+**ingestion** | main | [![Meltano Ingestion CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml)
+
+
 # DBT Example
 This repo is a simple DBT pipeline that uses a 'Jaffle Shop Project' to showcase dbt Core. The source tables and downstream tables are created in a postgres database hosted on [supabase](https://supabase.com/)
 
