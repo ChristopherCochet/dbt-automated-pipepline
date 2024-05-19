@@ -270,7 +270,7 @@ $ dbt build
 </details>
 
 ## The Data Pipeline
-The dbt pipeline is ran periodcially using github action and can then visualise the pipeline in the dbt core UI using the following commands:
+The dbt pipeline is ran periodically using github actions. The models and can then visualise the pipeline in the dbt core UI using the following commands:
 - `dbt docs generate` and then 
 - `dbt docs serve`
 
