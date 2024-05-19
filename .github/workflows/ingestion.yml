@@ -5,6 +5,13 @@ on:
  schedule:
     - cron: 0 */3 * * *
 
+  # Enable manual trigger
+ workflow_dispatch:
+   inputs:
+     tags:
+       description: 'Tags to label this manual run (optional)'
+       default: 'Manual trigger'
+
 defaults:
  run:
   working-directory: ./meltano-ingestion
