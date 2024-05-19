@@ -1,4 +1,4 @@
-name: CI
+name: meltano-ingestion
 
 on:
 #  workflow_dispatch:

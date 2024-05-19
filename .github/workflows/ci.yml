@@ -1,4 +1,4 @@
-name: CI
+name: dbt-transform
 
 on:
   # workflow_dispatch:

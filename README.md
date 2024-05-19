@@ -1,11 +1,9 @@
 ### Run Status
 
-The nightly build tests are run daily on AzureML.
-
 | Runs | Branch | Status |
 | --- | --- | --- |
-| **transform** | main | [![dbt Tranform CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml) | 
-**ingestion** | main | [![Meltano Ingestion CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml)
+| **Transform pipeline** | main | [![dbt-tranform-CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ci.yml) |
+**Ingestion script** | main | [![meltano-ingestion-CI](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml/badge.svg)](https://github.com/ChristopherCochet/dbt-example/actions/workflows/ingestion.yml) |
 
 
 # DBT Example
