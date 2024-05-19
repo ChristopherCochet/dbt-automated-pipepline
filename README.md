@@ -51,7 +51,7 @@ Meltano ingests data from an opensource API and write the data to the Supabase s
 Tickers (All coins)
 Request Method: GET
 Description: Get data for all coins. The maximum result is 100 coins per request. 
-Request URL: https://api.coinlore.net/api/tickers/?start=20&limit=10
+Request URL: https://api.coinlore.net/api/tickers/?start=20&limit=20
 Response:
 {
   "data": [
@@ -83,7 +83,7 @@ Response:
 
 ## Data Ingestion
 Meltano write the data to Supabase into a source table `global_crypto`.
-The configuration of the extract and load meltano process can be found in the `meltano.yml file` with the relevant meltano settings below:
+The configuration of the extract and load meltano process can be found in the [`meltano.yml file`](meltano-ingestion/meltano.yml) with the relevant meltano settings below:
 
 ```
 plugins:
