@@ -12,11 +12,23 @@ This repo showcases a dbt a simple **dbt core** pipeline paired with an data api
 
 > [dbt core](https://www.getdbt.com/product/what-is-dbt) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it
 
+<p align="center" width="100%">
+    <img src="images/dbt_core.png" width="180"/>
+</p>
+
 > [Supabase](https://supabase.com/) is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a Postgres database, user authentication, file storage etc.
+
+<p align="center" width="100%">
+<img src="images/supabase.jpg" width="180"/>
+</p>
 
 > [Meltano](https://meltano.com/) is an open-source platform for orchestrating ELT pipelines, enabling data teams to fetch, send, and transform data effortlessly​. Meltano is an open-source platform designed for building, running, and orchestrating ELT pipelines, utilizing Singer taps, targets, and dbt models.
 
-# How this pipeline works
+<p align="center" width="100%">
+<img src="images/meltano.png" width="180"/>
+</p>
+
+# How This Pipeline Example Works
 
 ## Supabase - The Data Repository  
 
@@ -33,6 +45,7 @@ Meltano ingests data from an opensource API and write the data to the Supabase s
 
 > Coinlore offers a public and free cryptocurrency API for developers and research projects and so on. Our API is open and doesn't require registration, providing reliable and independent data for over 12,000 crypto coins and more than 300 crypto exchanges.
 
+<details>
 ```
 Tickers (All coins)
 Request Method: GET
@@ -64,6 +77,7 @@ Response:
     "time": 1538560355
   }
 ```
+</details>
 
 ## Data Ingestion
 Meltano write the data to Supabase into a source table `global_crypto`.
@@ -106,6 +120,7 @@ A dbt core pipeline performs a series of transformation of the source tables - s
 
 The transformations are performed in sql and from sources schema tables -> staging schema tables -> marts schema tables.
 
+<details>
 
 ``` 
 $ dbt list
@@ -134,7 +149,7 @@ jaffle_shop.marts.customers
 jaffle_shop.marts.orders
 ```
 
-Building the entire pipeline and running dbt tests yileds the following:
+Building the entire pipeline and running dbt tests yields the following:
 
 ``` 
 $ dbt build
@@ -213,25 +228,14 @@ $ dbt build
 02:38:45  Done. PASS=30 WARN=0 ERROR=0 SKIP=0 TOTAL=30
 ```
 
+</details>
+
 ## The Data Pipeline
-``` 
-$ dbt docs generate
-02:41:09  Running with dbt=1.5.11
-02:41:10  Registered adapter: postgres=1.5.11
-02:41:10  Found 10 models, 20 tests, 0 snapshots, 0 analyses, 424 macros, 0 operations, 0 seed files, 7 sources, 0 exposures, 0 metrics, 0 groups
-02:41:10  
-02:41:10  Concurrency: 1 threads (target='dev')
-02:41:10  
-02:41:10  Building catalog
-02:41:10  Catalog written to /workspaces/dbt-example/target/catalog.json
-```
-
-
-We can then visualise the pipeline in the dbt core UI using the following commands:
+The dbt pipeline is ran periodcially using github action and can then visualise the pipeline in the dbt core UI using the following commands:
 - `dbt docs generate` and then 
 - `dbt docs serve`
 
-![](dbt_pipeline.png?raw=true)
+![](./images/dbt_pipeline.png?raw=true)
 
 ## Resources
 -  [Supabase](https://supabase.com/)
