@@ -1,0 +1,98 @@
+{
+  "streams": [
+    {
+      "stream": "cryptocurrencies",
+      "tap_stream_id": "cryptocurrencies",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the cryptocurrency"
+          },
+          "symbol": {
+            "type": "string",
+            "description": "The symbol of the cryptocurrency"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the cryptocurrency"
+          },
+          "nameid": {
+            "type": "string",
+            "description": "The unique name ID of the cryptocurrency"
+          },
+          "rank": {
+            "type": "integer",
+            "description": "The rank of the cryptocurrency"
+          },
+          "price_usd": {
+            "type": "string",
+            "description": "The price of the cryptocurrency in USD"
+          },
+          "percent_change_24h": {
+            "type": "string",
+            "description": "The percentage change in the price over the last 24 hours"
+          },
+          "percent_change_1h": {
+            "type": "string",
+            "description": "The percentage change in the price over the last 1 hour"
+          },
+          "percent_change_7d": {
+            "type": "string",
+            "description": "The percentage change in the price over the last 7 days"
+          },
+          "price_btc": {
+            "type": "string",
+            "description": "The price of the cryptocurrency in BTC"
+          },
+          "market_cap_usd": {
+            "type": "string",
+            "description": "The market capitalization of the cryptocurrency in USD"
+          },
+          "volume24": {
+            "type": "number",
+            "description": "The 24-hour trading volume of the cryptocurrency"
+          },
+          "volume24a": {
+            "type": "number",
+            "description": "The 24-hour trading volume of the cryptocurrency (alternate source)"
+          },
+          "csupply": {
+            "type": "string",
+            "description": "The circulating supply of the cryptocurrency"
+          },
+          "tsupply": {
+            "type": "string",
+            "description": "The total supply of the cryptocurrency"
+          },
+          "msupply": {
+            "type": "string",
+            "description": "The maximum supply of the cryptocurrency"
+          }
+        },
+        "required": ["id", "symbol", "name", "nameid", "rank", "price_usd"]
+      },
+      "key_properties": ["id"]
+    },
+    {
+      "stream": "metadata",
+      "tap_stream_id": "metadata",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "info_coins_num": {
+            "type": "integer",
+            "description": "The number of coins in the info"
+          },
+          "info_time": {
+            "type": "integer",
+            "description": "The timestamp of the info"
+          }
+        },
+        "required": ["info_coins_num", "info_time"]
+      },
+      "key_properties": ["info_time"]
+    }
+  ]
+}

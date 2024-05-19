@@ -80,8 +80,12 @@ models:
     columns:
       - name: event_date
         description: date of the crypto prices reported
-      - name: count_price_udpates
-        description: count of crypto price updates on that day
+      - name: symbol
+        description: crypto symbol for which price metrics are reported for
+      - name: name
+        description: crypto name for which price metrics are reported for              
+      - name: count_table_udpates
+        description: count of table updates using API calls on that day
       - name: count_cryptos
         description: count of distinct cryptos on that day
       - name: avg_crypto_prices

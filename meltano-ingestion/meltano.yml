@@ -11,14 +11,20 @@ plugins:
     variant: widen
     pip_url: tap-rest-api-msdk
     capabilities:
-      - discover    
-    config:          
+    - state
+    - catalog
+    - discover    
+    config:
       api_url: https://api.coinlore.net/api/tickers/?start=20&limit=20
       streams:
       - name: global_crypto
         primary_keys:
-        - id
-        records_path: $.data[*]
+        - info_time
+        records_path: $.[*]
+      # - name: global_crypto_metadata
+      #   primary_keys:
+      #   - time
+      #   records_path: $.info[*]
   #   pip_url: tap-rest-api-msdk
   #   config:
   #     api_url: https://api.github.com/users
@@ -42,8 +48,9 @@ plugins:
     config:
       user: ${DB_USER}
       host: ${DB_HOST}
-      add_record_metadata: true
+      # add_record_metadata: true
       database: ${DB_NAME}
       password: ${DB_PASS}
       port: 5432
       default_target_schema: sources
+      load_method: append-only
