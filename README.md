@@ -46,6 +46,7 @@ Meltano ingests data from an opensource API and write the data to the Supabase s
 > Coinlore offers a public and free cryptocurrency API for developers and research projects and so on. Our API is open and doesn't require registration, providing reliable and independent data for over 12,000 crypto coins and more than 300 crypto exchanges.
 
 <details>
+    
 ```
 Tickers (All coins)
 Request Method: GET
@@ -77,6 +78,7 @@ Response:
     "time": 1538560355
   }
 ```
+
 </details>
 
 ## Data Ingestion
